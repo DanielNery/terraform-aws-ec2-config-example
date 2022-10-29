@@ -4,6 +4,8 @@ resource "aws_instance" "server" {
   instance_type = var.instance_type
   key_name      = var.key_name
   
+  user_data     = "${file("initial_script.sh")}"
+
   ebs_block_device {
     device_name = "/dev/sda1"
     volume_size = "30"
